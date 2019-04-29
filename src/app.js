@@ -15,3 +15,6 @@ app.use(favicon(path.join(__dirname, '..', '..', 'public', 'assets', 'favicon.pn
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(controllers);
+
+
+module.exports = app;
