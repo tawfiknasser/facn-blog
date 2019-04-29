@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/facn5/facn-blog#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "env2": "^2.2.2",
     "express": "^4.16.4",
