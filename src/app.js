@@ -9,4 +9,5 @@ const compression = require('compression');
 const app = express();
 
 app.set('port', process.env.PORT || 6666);
+app.disable('x-powered-by');
 app.use(compression());
