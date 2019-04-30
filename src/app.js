@@ -4,7 +4,7 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const exphbs = require("express-handlebars");
-
+const helpers = require("./views/helpers")
 const controllers = require('./controllers/index');
 
 const app = express();
