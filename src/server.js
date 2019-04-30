@@ -1,4 +1,5 @@
-const app = require('./app.js')
-app.listen('port', () => {
-  console.log(`Server is running on http://localhost:${port}`)
-})
+const app = require('./app')
+
+app.listen(app.get('port'), () => {
+  console.log('App running on port', app.get('port'));
+}); 
