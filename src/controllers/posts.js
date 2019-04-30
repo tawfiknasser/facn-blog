@@ -33,15 +33,3 @@ exports.deleteBlog = (req, res) => {
     res.redirect("/posts");
   });
 };
-
-// exports.post = (req, res) => {
-//   console.log(req.body.name, req.body.image_url);
-//   res.redirect('/fruit');
-// };
-
-// const addNewPost = (writer_id, title, description, likes, cb) =>
-//   query.insert(
-//     "INSERT INTO user (writer_id,title,description,likes) VALUES ($1,$2,$3,$4);",
-//     [writer_id, title, description, likes],
-//     cb
-//   );
