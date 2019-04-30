@@ -1,5 +1,5 @@
 const express = require('express');
-const queries = require('../../database/queries/sql.js')
+const queries = require('../../database/queries/sql.js');
 
 exports.post = (request, response) => {
   queries.selectUserByName(request.body.username, (error, response) => {
@@ -10,18 +10,8 @@ exports.post = (request, response) => {
     } else {
       console.log('New account created');
       //call function here to add username and password to DB
-      response.redirect('posts')
+      queries.addNewUser(request.body.name, request.body.username, request.body.password);
+      response.redirect('/posts')
     }
-    // if (error) {
-    //   console.log('Invalid');
-    // } else {
-    //   if (response.rows[0].count > 0) {
-    //     console.log("New account created");
-    //     response.redirect('/posts');
-    //   } else {
-    //     console.log('invalid user');
-    //     response.redirect('/login')
-    //   }
-    }
-  });
-// }
+    });
+}
