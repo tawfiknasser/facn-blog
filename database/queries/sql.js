@@ -39,9 +39,9 @@ const updatePost = (id, title, description) =>
     cb
   );
 
-const tureUser = (username, password, cb) =>
+const trueUser = (username, password, cb) =>
   query.select(
-    `SELECT count(id) from users where username = ${username} AND password = ${password};`,
+    `SELECT count(id) from users where username = '${username}' AND password = '${password}';`,
     cb
   );
 
@@ -55,5 +55,5 @@ module.exports = {
   addNewUser,
   addNewPost,
   updatePost,
-  tureUser
+  trueUser
 };
