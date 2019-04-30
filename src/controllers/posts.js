@@ -1,6 +1,6 @@
 const data = require('../../data.json');
 
-console.log(data);
+// console.log(data);
 
 exports.get = (req, res) => {
   res.render("posts",{
