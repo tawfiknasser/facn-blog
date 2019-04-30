@@ -21,7 +21,7 @@ IF NOT EXISTS blogs
    writer_id INTEGER NOT NULL,
    title VARCHAR NOT NULL,
    description VARCHAR NOT NULL,
-   likes INTEGER NOT NULL
+   likes INTEGER NOT NULL DEFAULT 0
  );
 
 

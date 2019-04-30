@@ -1,3 +1,3 @@
 // module.exports = {
-//   eg: require('./eg'),
+//   deleteBlog: require("./deleteBlog")
 // };

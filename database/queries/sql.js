@@ -25,17 +25,19 @@ const addNewUser = (name, username, password, cb) =>
     cb
   );
 
-const addNewPost = (writer_id, title, description, likes, cb) =>
+const addNewPost = (writer_id, title, description, cb) =>
   query.insert(
-    "INSERT INTO blogs (writer_id,title,description,likes) VALUES ($1,$2,$3,$4);",
-    [writer_id, title, description, likes],
+    "INSERT INTO blogs (writer_id,title,description) VALUES ($1,$2,$3);",
+    [writer_id, title, description],
     cb
   );
 
-const updatePost = (id, title, description) =>
+const updatePost = (id, title, description, cb) =>
   query.insert(
-    `UPDATE blogs (title,description) WHERE id = ${id} VALUES ($1,$2);`,
-    [title, description],
+    `UPDATE blogs 
+      SET title = '${title}',
+      description = '${description}'
+       WHERE blogs.id = '${id}';`,
     cb
   );
 
