@@ -1,20 +1,13 @@
 {{!-- {{>header}} --}}
 <ul>
-    {{#each data}}
+    {{#each blogs}}
     <li><div class="container">
-        Name : {{author}}
-        <br>
         Title : {{title}}
         <br>
-        Desc : {{desc}}
+        Desc : {{description}}
         <br>
         Likes : {{likes}}
-        <br>
-        Date : {{date}}
-        <br>
-        <img width="200px" height="80px" src={{url}}>
     </div></li>
     {{/each}}
 </ul>
-
 {{!-- {{>footer}} --}}

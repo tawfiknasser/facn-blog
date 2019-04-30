@@ -1,19 +1,14 @@
-// const data = require('../../data.json');
-
-// console.log(data);
+const queries = require('../../database/queries/sql');
 
 exports.get = (req, res) => {
-  res.render("posts",{
-    data: data
-  });
-};
+  queries.selectAllFrom("blogs", (err, result) => {
+    if (err) console.log("ERRROR");
+    res.render('posts', {
+      blogs: result.rows
+    })
+  })
+}
 
-/*
-app.get('/populations', (req, res) => {
-  res.render("populations",{
-    title: 'Countries populations',
-    username: 'Obaydah',
-    countries: countryData
-  });
-})
-*/
+exports.post = (req, res) => {
+  queries.addNewPost()
+}

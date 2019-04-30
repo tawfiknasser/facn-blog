@@ -4,8 +4,8 @@ const login = require('./login');
 const router = express.Router();
 
 router.get('/posts',posts.get);
+// router.post('/posts',posts.get);
 router.get('/',login.get)
 router.post('/login',login.post);
 
 module.exports = router;
-  
