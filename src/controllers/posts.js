@@ -10,8 +10,19 @@ exports.get = (req, res) => {
 }
 
 exports.post = (req, res) => {
-  queries.addNewPost()
+  let id = req.body.id;
+  let title = req.body.title;
+  let desc = req.body.desc;
+  queries.addNewPost(id,title,desc,likes,(err,result)=>{
+    if(err) console.log("ERROROROR");
+    res.redirect('/posts');
+  })
 }
+
+// exports.post = (req, res) => {
+//   console.log(req.body.name, req.body.image_url);
+//   res.redirect('/fruit');
+// };
 
 // const addNewPost = (writer_id, title, description, likes, cb) =>
 //   query.insert(
