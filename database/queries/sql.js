@@ -41,7 +41,7 @@ const updatePost = (id, title, description) =>
 
 const tureUser = (username, password, cb) =>
   query.select(
-    `SELECT * from users where username = ${username} AND password = ${password};`,
+    `SELECT count(id) from users where username = ${username} AND password = ${password};`,
     cb
   );
 
