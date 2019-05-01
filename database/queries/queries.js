@@ -1,8 +1,8 @@
-const databaseConnection = require("../db_connection.js");
+const databaseConnection = require('../db_connection.js');
 
 const selectquery = (sql, cb) => {
   databaseConnection.query(sql, (err, res) => {
-    console.log("Inside selectquery");
+    console.log('Inside selectquery');
     if (err) {
       cb(err);
     } else {
@@ -13,7 +13,7 @@ const selectquery = (sql, cb) => {
 
 const insertquery = (sql, args, cb) => {
   databaseConnection.query(sql, args, (err, res) => {
-    console.log("Inside insertquery");
+    console.log('Inside insertquery');
     if (err) {
       cb(err);
     } else {
@@ -22,8 +22,8 @@ const insertquery = (sql, args, cb) => {
   });
 };
 
-const updatequery = (sql, cb) => {
-  databaseConnection.query(sql, (err, res) => {
+const updatequery = (sql, args, cb) => {
+  databaseConnection.query(sql, args, (err, res) => {
     if (err) {
       cb(err);
     } else {
