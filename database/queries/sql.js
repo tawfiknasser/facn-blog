@@ -4,7 +4,7 @@ const selectAllFrom = (table, cb) =>
   query.select(`SELECT * from ${table};`, cb);
 
 const selectByIdFrom = (id, table, cb) =>
-  query.select(`SELECT * from '${table}' where id = ${id};`, cb);
+  query.select(`SELECT * from ${table} where id = ${id};`, cb);
 
 const selectUserByName = (name, cb) =>
   query.select(`SELECT * from users where name = ${name};`, cb);
@@ -25,15 +25,26 @@ const addNewUser = (name, username, password, cb) =>
     cb
   );
 
-const addNewPost = (writer_id, title, description, likes, cb) =>
+const addNewPost = (writer_id, title, description, cb) =>
   query.insert(
-    "INSERT INTO blogs (writer_id,title,description,likes) VALUES ($1,$2,$3,$4);",
-    [writer_id, title, description, likes],
+    "INSERT INTO blogs (writer_id,title,description) VALUES ($1,$2,$3);",
+    [writer_id, title, description],
     cb
   );
 
+const updateLikes = (id, cb) => {
+  let data;
+  selectByIdFrom(id, "blogs", (err, result) => {
+    if(err) console.log("update error");
+    data = result.rows;
+    query.update(
+      `UPDATE blogs SET likes = $2 WHERE id = $1`, [data[0].id, data[0].likes += 1], cb
+    );
+  })
+}
+
 const updatePost = (id, title, description) =>
-  query.insert(
+  query.update(
     `UPDATE blogs (title,description) WHERE id = ${id} VALUES ($1,$2);`,
     [title, description],
     cb
@@ -54,6 +65,7 @@ module.exports = {
   deleteBlogByTitle,
   addNewUser,
   addNewPost,
+  updateLikes,
   updatePost,
   trueUser
 };
