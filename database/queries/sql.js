@@ -7,7 +7,7 @@ const selectByIdFrom = (id, table, cb) =>
   query.select(`SELECT * from ${table} where id = ${id};`, cb);
 
 const selectUserByName = (name, cb) =>
-  query.select(`SELECT * from users where name = ${name};`, cb);
+  query.select(`SELECT * from users where name = '${name}';`, cb);
 
 const deleteByIdFrom = (id, table, cb) =>
   query.select(`DELETE FROM ${table} WHERE id = ${id};`, cb);
@@ -35,13 +35,15 @@ const addNewPost = (writer_id, title, description, cb) =>
 const updateLikes = (id, cb) => {
   let data;
   selectByIdFrom(id, "blogs", (err, result) => {
-    if(err) console.log("update error");
+    if (err) console.log("update error");
     data = result.rows;
     query.update(
-      `UPDATE blogs SET likes = $2 WHERE id = $1`, [data[0].id, data[0].likes += 1], cb
+      `UPDATE blogs SET likes = $2 WHERE id = $1`,
+      [data[0].id, (data[0].likes += 1)],
+      cb
     );
-  })
-}
+  });
+};
 
 const updatePost = (id, title, description, cb) =>
   query.insert(

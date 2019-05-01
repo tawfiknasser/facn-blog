@@ -23,7 +23,7 @@ exports.editPost = (req, res) => {
   const { id, title, desc } = req.body;
   queries.updatePost(id, title, desc, (err, result) => {
     if (err) console.log(err);
-    res.redirect("/posts");
+    res.redirect("/editpost");
   });
 };
 
