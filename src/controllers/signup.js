@@ -1,9 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const queries = require('../../database/queries/sql.js');
+const app = express();
 
 exports.post = (request, response) => {
   queries.selectUserByName(request.body.username, (error, response) => {
-    console.log(response);
+    app.use(bodyParser.json());
+    console.log("The response is: " + response);
     if (response.rows[0].count > 0) {
       console.log('Sorry, that name is already taken');
       response.redirect('/signup');

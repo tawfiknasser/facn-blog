@@ -9,7 +9,7 @@ router.post('/posts',posts.post);
 // router.post('/posts',posts.get);
 router.get('/',login.get)
 router.post('/login',login.post);
-// router.get('/signup', signup.get);
+router.get('/signup', signup.get);
 router.post('/signup', signup.post)
 
 module.exports = router;
