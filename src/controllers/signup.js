@@ -3,6 +3,13 @@ const bodyParser = require('body-parser');
 const queries = require('../../database/queries/sql.js');
 const app = express();
 
+exports.get = (request, response) => {
+  queries.selectUserByName(request.body.username, (error, result) => {
+    if (error) console.log('Error');
+    result.redirect('/posts')
+  })
+}
+
 exports.post = (request, response) => {
   queries.selectUserByName(request.body.username, (error, response) => {
     app.use(bodyParser.json());
