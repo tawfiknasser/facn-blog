@@ -18,6 +18,7 @@
                     </form>
                 </div>
 
+                {{#if isOwner}}
                 <div class="btn-group">
                     <form action="/editPost" method="get">
                         <button type="submit" name="id" value="{{this.id}}" class="btn btn-basic">Edit post</button>
@@ -27,6 +28,7 @@
                         <button type="submit" name="id" value="{{this.id}}" class="btn btn-danger">Remove post</button>
                     </form>
                 </div>
+                {{/if}}
             </div>
         </div>
         {{/each}}
