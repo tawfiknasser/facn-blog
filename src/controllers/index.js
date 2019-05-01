@@ -12,5 +12,6 @@ router.post('/login', login.post);
 router.post('/like', like.post);
 router.post('/editPost', posts.editPost);
 router.post('/deleteBlog', posts.deleteBlog);
+router.post('/auth', login.checkauth);
 
 module.exports = router;
