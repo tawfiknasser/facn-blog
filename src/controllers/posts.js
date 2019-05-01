@@ -4,9 +4,15 @@ exports.get = (req, res) => {
   queries.selectAllFrom('blogs', (err, result) => {
     if (err) console.log('ERRROR');
     res.render('posts', {
-      blogs: result.rows
+      blogs: result.rows.sort(function(a, b) {
+        return a.id - b.id;
+      })
     });
   });
+};
+
+exports.addPostGet = (req, res) => {
+  res.render('addpost')
 };
 
 exports.addPost = (req, res) => {
@@ -15,7 +21,6 @@ exports.addPost = (req, res) => {
   const desc = req.body.desc;
   queries.addNewPost(id, title, desc, (err, result) => {
     if (err) console.log(err);
-    if (result) console.log(result);
     res.redirect('/posts');
   });
 };
