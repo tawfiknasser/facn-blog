@@ -8,14 +8,18 @@
 </form>
 
 <ul>
+    <div id="container">
     {{#each blogs}}
     <li><div class="container">
         Title : {{title}}
         <br>
         Desc : {{description}}
         <br>
-        Likes : {{likes}}
+        <form action="/like" method="post">
+        <button type="submit" name="like" value={{id}}>Like</button> : {{likes}}
+        </form>
     </div></li>
     {{/each}}
+    </div>
 </ul>
 {{!-- {{>footer}} --}}
