@@ -1,11 +1,29 @@
-{{>header}}
-<form class="" action="/login" method="post">
-  <label class="" for="username">Username</label>
-  <input class="" type="text" name="username" id="username" placeholder="Enter your username"
-    title="At least two letters" required autocomplete="off">
-  <label class="" for="password">Password</label>
-  <input class="" type="text" name="password" id="password" placeholder="Enter your password"
-    title="At least two letters" required autocomplete="off">
-  <input class="{{funcName}}" type="submit" value="Submit" />
-</form>
-{{>footer}}
+<br>
+<br>
+<div class="container  bg-secondary jumbotron">
+  <div class="col">
+    <div class="container jumbotron">
+
+      <form action="/login" method="post" class="form-group">
+        {{!-- <label class="group-" for="username">Username</label> --}}
+        <div class="input-group">
+          <span><img src="https://img.icons8.com/metro/26/000000/contacts.png"></span>
+          <input class="form-control" type="text" name="username" id="username" placeholder="Enter your username"
+            title="At least two letters" required autocomplete="off">
+        </div>
+
+        <div class="input-group">
+          <span><img src="https://img.icons8.com/metro/26/000000/lock.png"></span>
+          <input class="form-control" type="text" name="password" id="password" placeholder="Enter your password"
+            title="At least two letters" required autocomplete="off">
+        </div>
+        <div class="input-group">
+          <span><img src="https://img.icons8.com/material/24/000000/import.png"></span>
+          <input class="{{funcName}} form-control btn btn-outline-primary" type="submit" value="Login" />
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
