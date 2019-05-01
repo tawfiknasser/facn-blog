@@ -13,7 +13,7 @@ exports.post = (req, res) => {
   let id = req.body.id;
   let title = req.body.title;
   let desc = req.body.desc;
-  queries.addNewPost(id,title,desc,likes,(err,result)=>{
+  queries.addNewPost(id,title,desc,(err,result)=>{
     if(err) console.log("ERROROROR");
     res.redirect('/posts');
   })
