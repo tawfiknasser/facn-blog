@@ -7,7 +7,8 @@ const signup = require('./signup');
 const router = express.Router();
 
 router.get('/posts', posts.get);
-router.post('/posts', posts.addPost);
+router.get('/addpost',posts.addPostGet);
+router.post('/addpost', posts.addPost);
 router.get('/', login.get);
 router.post('/login', login.post);
 router.post('/like', like.post);
