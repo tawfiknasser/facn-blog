@@ -58,6 +58,9 @@ const trueUser = (username, password, cb) =>
     cb
   );
 
+const getUserPass = (username, cb) =>
+  query.select(`SELECT password from users where username ='${username}'`, cb);
+
 module.exports = {
   selectAllFrom,
   selectByIdFrom,
@@ -70,4 +73,5 @@ module.exports = {
   updateLikes,
   updatePost,
   trueUser,
+  getUserPass,
 };
