@@ -1,13 +1,32 @@
 {{!-- {{>header}} --}}
+
+<form action="/posts" method="post">
+    <input type="text" name="id" placeholder="writer id">
+    <input type="text" name="title" placeholder="title">
+    <input type="text" name="desc" placeholder="desc">
+    <input type="submit" value="Submit">
+</form>
+
 <ul>
     {{#each blogs}}
-    <li><div class="container">
-        Title : {{title}}
-        <br>
-        Desc : {{description}}
-        <br>
-        Likes : {{likes}}
-    </div></li>
+    <li>
+        <div class="container">
+            Title : {{title}}
+            <br>
+            Desc : {{description}}
+            <br>
+            Likes : {{likes}}
+            <form action="/editPost" method="post">
+                <input type=" text" name="title" placeholder="title">
+                <input type="text" name="desc" placeholder="desc">
+                <button type="submit" name="id" value="{{this.id}}">Edit post</button>
+            </form>
+
+            <form action="/deleteBlog" method="post">
+                <button type="submit" name="id" value="{{this.id}}">Remove post</button>
+            </form>
+        </div>
+    </li>
     {{/each}}
 </ul>
 {{!-- {{>footer}} --}}
