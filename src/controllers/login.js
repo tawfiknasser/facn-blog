@@ -6,22 +6,37 @@ const utils = require('../utils/utils');
 const secret = 'blablabalbsasfsafe';
 
 exports.post = (req, res) => {
-  queries.trueUser(req.body.username, req.body.password, (err, resu) => {
-    console.log(res);
+  queries.getUserPass(req.body.username, (err, resu) => {
     if (err) {
       console.log('Error in validating the username and password');
     } else {
-      if (resu.rows[0].count > 0) {
-        const uDetails = {
-          'content-type': 'application/json',
-          uUser: req.body.username
-        };
-        const cookie = sign(uDetails, secret);
-        const options = {
-          httpOnly: true
-        };
-        res.cookie('udetails', cookie, options);
-        res.redirect('/posts');
+      if (resu.rowCount === 0) {
+        res.render('login');
+      } else if (resu.rows[0].count > 0) {
+        utils.comparePasswords(
+          req.body.password,
+          resu.rows[0].password,
+          (er, success) => {
+            if (er) console.log(er);
+            else {
+              if (success) {
+                const uDetails = {
+                  'content-type': 'application/json',
+                  uUser: req.body.username
+                };
+                const cookie = sign(uDetails, secret);
+                const options = {
+                  httpOnly: true
+                };
+                res.cookie('udetails', cookie, options);
+                res.render('login');
+              } else {
+                console.log('Invalid user name or password');
+              }
+            }
+            res.render('login');
+          }
+        );
       } else {
         console.log('invalid user');
         res.redirect('/login');
