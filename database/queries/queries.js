@@ -2,6 +2,7 @@ const databaseConnection = require('../db_connection.js');
 
 const selectquery = (sql, cb) => {
   databaseConnection.query(sql, (err, res) => {
+    console.log('Inside selectquery');
     if (err) {
       cb(err);
     } else {
@@ -12,6 +13,7 @@ const selectquery = (sql, cb) => {
 
 const insertquery = (sql, args, cb) => {
   databaseConnection.query(sql, args, (err, res) => {
+    console.log('Inside insertquery');
     if (err) {
       cb(err);
     } else {

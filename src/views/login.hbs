@@ -1,5 +1,5 @@
 {{>header}}
-<form class="" action="/login" method="post">
+<!-- <form class="" action="/login" method="post">
       <label class="" for="username">Username</label>
       <input class="" type="text" name="username" id="username"
         placeholder="Enter your username" pattern="[A-Za-z]{2,20}"
@@ -8,6 +8,23 @@
         <input class="" type="text" name="password" id="password"
           placeholder="Enter your password" pattern="[A-Za-z]{2,20}"
           title="At least two letters" required autocomplete="off">
-      <input class="{{funcName}}" type="submit" value="Submit"/>
+      <input class="" type="submit" value="Submit"/>
+</form> -->
+
+<form class="signup" action="/signup" method="POST">
+
+  <label class="" for="name">Name</label>
+  <input type="text" name="name" id="name" placeholder="Enter your name" required autocomplete="off">
+
+  <label class="" for="username">Username</label>
+  <input type="text" name="username" id="username" placeholder="Enter your username" required autocomplete="off">
+
+  <label class="" for="password">Password</label>
+  <input type="text" name="password" id="password" placeholder="Enter your password" required autocomplete="off">
+
+  <input type="submit" value="submit">
+
 </form>
+
+
 {{>footer}}
