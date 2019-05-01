@@ -3,8 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const compression = require('compression');
-const exphbs = require("express-handlebars");
-const helpers = require("./views/helpers")
+const exphbs = require('express-handlebars');
+const helper = require('./views/helpers');
 const controllers = require('./controllers/index');
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'assets', 'favicon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.set('views',path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine(
   'hbs',
@@ -24,13 +24,10 @@ app.engine(
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
     defaultLayout: 'main',
-    // helpers: helpers,
+    helpers: helper,
   })
-)
+);
 
 app.use(controllers);
-
-
-
 
 module.exports = app;
