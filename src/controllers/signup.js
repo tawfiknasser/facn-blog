@@ -25,7 +25,7 @@ exports.get = (request, response) => {
 }
 
 exports.post = (request, response) => {
-  console.log(request.body.username);
+  console.log(request.body.name);
   console.log("The response is: " + response);
 
   queries.selectUserByName(request.body.username, (error, result) => {
