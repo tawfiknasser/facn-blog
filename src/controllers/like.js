@@ -1,12 +1,13 @@
 const queries = require('../../database/queries/sql');
 
 exports.post = (req, res) => {
-    let id = req.body.like;
-    queries.updateLikes(id, (err, result) => {
-        if (err) console.log("i'm here");
-        res.redirect('/posts');
-    })
-}
+  const id = req.body.like;
+  queries.updateLikes(id, (err, result) => {
+    console.log(result);
+    if (err) console.log('i\'m here');
+    res.redirect('/posts');
+  });
+};
 
 // exports.post = (req, res) => {
 //     let id = req.body.id;

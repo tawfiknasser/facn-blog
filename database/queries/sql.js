@@ -1,4 +1,4 @@
-const query = require("./queries.js");
+const query = require('./queries.js');
 
 const selectAllFrom = (table, cb) =>
   query.select(`SELECT * from ${table};`, cb);
@@ -20,15 +20,15 @@ const deleteBlogByTitle = (title, cb) =>
 
 const addNewUser = (name, username, password, cb) =>
   query.insert(
-    "INSERT INTO user (name,username,password) VALUES ($1,$2,$3);",
+    'INSERT INTO user (name,username,password) VALUES ($1,$2,$3);',
     [name, username, password],
     cb
   );
 
-const addNewPost = (writer_id, title, description, cb) =>
+const addNewPost = (writerId, title, description, cb) =>
   query.insert(
-    "INSERT INTO blogs (writer_id,title,description) VALUES ($1,$2,$3);",
-    [writer_id, title, description],
+    'INSERT INTO blogs (writer_id,title,description) VALUES ($1,$2,$3);',
+    [writerId, title, description],
     cb
   );
 
@@ -45,7 +45,7 @@ const updateLikes = (id, cb) => {
 
 const updatePost = (id, title, description, cb) =>
   query.insert(
-    `UPDATE blogs 
+    `UPDATE blogs
       SET title = '${title}',
       description = '${description}'
        WHERE blogs.id = '${id}';`,
@@ -69,5 +69,5 @@ module.exports = {
   addNewPost,
   updateLikes,
   updatePost,
-  trueUser
+  trueUser,
 };
