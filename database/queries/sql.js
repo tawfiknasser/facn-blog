@@ -1,4 +1,5 @@
 const query = require("./queries.js");
+const databaseConnection = require("../db_connection.js");
 
 const selectAllFrom = (table, cb) =>
   query.select(`SELECT * from ${table};`, cb);
@@ -18,12 +19,12 @@ const deleteUserByName = (name, cb) =>
 const deleteBlogByTitle = (title, cb) =>
   query.select(`DELETE FROM blogs WHERE title = '${title}';`, cb);
 
-const addNewUser = (name, username, password, cb) =>
-  query.insert(
-    `INSERT INTO users (name,username,password) VALUES ($1,$2,$3);`,
+const addNewUser = (name, username, password, cb) => {
+  databaseConnection.query(`INSERT INTO users (name, username, password) VALUES ($1,$2,$3);`,
     [name, username, password],
     cb
-  );
+  )
+}
 
 const addNewPost = (writer_id, title, description, likes, cb) =>
   query.insert(
