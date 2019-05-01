@@ -1,4 +1,5 @@
 const queries = require('../../database/queries/sql.js');
+const bcrypt = require('../utils/utils.js');
 
 exports.get = (request, response) => {
   queries.selectUserByName(request.body.username, (error, result) => {
@@ -9,8 +10,12 @@ exports.get = (request, response) => {
 };
 
 exports.post = (request, response) => {
-  console.log(request.body.name);
-  console.log(`The response is: ${response}`);
+  // console.log(request.body.name);
+  // console.log(`The response is: ${response}`);
+  // console.log(`Hashed password is ${bcrypt.hashPassword(request.body.password, (error, hashedPassword) => {
+  //   if (error) console.log(error);
+  //   else console.log(hashedPassword);
+  // })}`);
 
   queries.selectUserByName(request.body.username, (error, result) => {
     if (error) console.log(error);
@@ -18,15 +23,20 @@ exports.post = (request, response) => {
       console.log('Sorry, that name is already taken');
       response.redirect('/signup');
     } else {
-      queries.addNewUser(request.body.name, request.body.username,
-        request.body.password, (err, res) => {
-          console.log(res);
-          if (err) {
-            console.log(err);
-          } else {
-            console.log('Creating new user account');
-          }
-        });
+      bcrypt.hashPassword(request.body.password, (error, hashedPassword) => {
+        if (error) console.log(error);
+        else {
+          queries.addNewUser(request.body.name, request.body.username,
+            hashedPassword, (err, res) => {
+              console.log(res);
+              if (err) {
+                console.log(err);
+              } else {
+                console.log('Creating new user account');
+              }
+            });
+        }
+      });
       response.redirect('/posts');
     }
   });

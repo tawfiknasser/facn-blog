@@ -9,7 +9,7 @@ const controllers = require('./controllers/index');
 
 const app = express();
 
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 3005);
 app.disable('x-powered-by');
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'assets', 'favicon.png')));
