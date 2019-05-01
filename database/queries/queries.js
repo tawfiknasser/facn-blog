@@ -20,8 +20,8 @@ const insertquery = (sql, args, cb) => {
   });
 };
 
-const updatequery = (sql, cb) => {
-  databaseConnection.query(sql, (err, res) => {
+const updatequery = (sql, args, cb) => {
+  databaseConnection.query(sql, args, (err, res) => {
     if (err) {
       cb(err);
     } else {
