@@ -1,0 +1,11 @@
+<div id="container">
+    <div class="container">
+        <form action="/saveChanges" method="post">
+            <label for="title">Title:</label>
+            <input type=" text" name="title" placeholder="title" value="{{blog.title}}">
+            <label for="title">Descreption:</label>
+            <textarea name="desc" cols="23" rows="10">{{blog.description}}</textarea>
+            <button type="submit" name="id" value="{{blog.id}}">Save changes</button>
+        </form>
+    </div>
+</div>
