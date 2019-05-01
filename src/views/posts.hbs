@@ -1,29 +1,35 @@
 {{!-- {{>header}} --}}
-    <div class="container-fluid">
+
+<div class="container-fluid">
+    <div class="container-fluid bg-secondary">
         <a href="./addpost" class="btn btn-outline-success">Add Post</a>
         {{#each blogs}}
-            <div class="container-fluid">
-                <div >Title : {{title}}
-                    <br>
-                Desc : {{description}}
-                <form action="/like" method="post">
-                    <button class="btn btn-outline-primary" type="submit" name="like" value={{id}}><i class="far fa-heart"></i></button> : {{likes}}
-                </form>
+        <div class="container jumbotron ">
+            <div>
+                <h3>Title: {{title}}</h3>
+                <h6>Desc: {{description}}</h6>
+                <div class="btn-group">
+                    <form action="/like" method="post">
+                        <button class="btn btn-outline-info" type="submit" name="like" value={{id}}>
+                            <i class="far fa-heart">
+                                : {{likes}}
+                            </i>
+                        </button>
+                    </form>
+                </div>
 
-                <form action="/editPost" method="get">
-                    <button type="submit" name="id" value="{{this.id}}">Edit post</button>
-                </form>
+                <div class="btn-group">
+                    <form action="/editPost" method="get">
+                        <button type="submit" name="id" value="{{this.id}}" class="btn btn-basic">Edit post</button>
+                    </form>
 
-                {{!-- <form action="/editPost" method="post">
-                    <input type=" text" name="title" placeholder="title">
-                    <input type="text" name="desc" placeholder="desc">
-                    <button type="submit" name="id" value="{{this.id}}">Edit post</button>
-                </form> --}}
-                <form action="/deleteBlog" method="post">
-                    <button type="submit" name="id" value="{{this.id}}">Remove post</button>
-                </form>
+                    <form action="/deleteBlog" method="post">
+                        <button type="submit" name="id" value="{{this.id}}" class="btn btn-danger">Remove post</button>
+                    </form>
                 </div>
             </div>
+        </div>
         {{/each}}
     </div>
+</div>
 {{!-- {{>footer}} --}}
