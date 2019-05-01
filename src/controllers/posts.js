@@ -4,15 +4,21 @@ exports.get = (req, res) => {
   queries.selectAllFrom("blogs", (err, result) => {
     if (err) console.log("ERRROR");
     res.render("posts", {
-      blogs: result.rows
+      blogs: result.rows.sort(function(a, b) {
+        return a.id - b.id;
+      })
     });
   });
 };
 
+exports.addPostGet = (req, res) => {
+  res.render("addpost");
+};
+
 exports.addPost = (req, res) => {
-  let id = req.body.id;
-  let title = req.body.title;
-  let desc = req.body.desc;
+  const id = req.body.id;
+  const title = req.body.title;
+  const desc = req.body.desc;
   queries.addNewPost(id, title, desc, (err, result) => {
     if (err) console.log(err);
     res.redirect("/posts");
@@ -30,6 +36,7 @@ exports.editPost = (req, res) => {
 exports.deleteBlog = (req, res) => {
   queries.deleteByIdFrom(req.body.id, "blogs", (err, result) => {
     if (err) console.log(err);
+    if (result) console.log(result);
     res.redirect("/posts");
   });
 };
