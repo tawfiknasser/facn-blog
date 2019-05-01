@@ -4,7 +4,7 @@ const selectAllFrom = (table, cb) =>
   query.select(`SELECT * from ${table};`, cb);
 
 const selectByIdFrom = (id, table, cb) =>
-  query.select(`SELECT * from '${table}' where id = ${id};`, cb);
+  query.select(`SELECT * from ${table} where id = ${id};`, cb);
 
 const selectUserByName = (name, cb) =>
   query.select(`SELECT * from users where name = ${name};`, cb);
@@ -32,6 +32,17 @@ const addNewPost = (writer_id, title, description, cb) =>
     cb
   );
 
+const updateLikes = (id, cb) => {
+  let data;
+  selectByIdFrom(id, "blogs", (err, result) => {
+    if(err) console.log("update error");
+    data = result.rows;
+    query.update(
+      `UPDATE blogs SET likes = $2 WHERE id = $1`, [data[0].id, data[0].likes += 1], cb
+    );
+  })
+}
+
 const updatePost = (id, title, description, cb) =>
   query.insert(
     `UPDATE blogs 
@@ -56,6 +67,7 @@ module.exports = {
   deleteBlogByTitle,
   addNewUser,
   addNewPost,
+  updateLikes,
   updatePost,
   trueUser
 };

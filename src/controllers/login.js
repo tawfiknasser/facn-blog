@@ -1,7 +1,7 @@
 const queries = require('../../database/queries/sql.js')
 exports.post = (req, res) => {
+  
   queries.trueUser(req.body.username, req.body.password, (err, resu) => {
-      console.log(res);
       if (err) {
         console.log("Invalid")
       } else {
@@ -15,8 +15,6 @@ exports.post = (req, res) => {
       }
     })
 }
-
-
 
 exports.get = (req, res) => {
   res.render('login');
