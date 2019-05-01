@@ -1,4 +1,4 @@
-const databaseConnection = require("../db_connection.js");
+const databaseConnection = require('../db_connection.js');
 
 const selectquery = (sql, cb) => {
   databaseConnection.query(sql, (err, res) => {
