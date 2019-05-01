@@ -1,7 +1,7 @@
 {{!-- {{>header}} --}}
 
 <form action="/posts" method="post">
-    <input type="text" name="id" placeholder="id">
+    <input type="text" name="id" placeholder="writer id">
     <input type="text" name="title" placeholder="title">
     <input type="text" name="desc" placeholder="desc">
     <input type="submit" value="Submit">
@@ -9,17 +9,27 @@
 
 <ul>
     <div id="container">
-    {{#each blogs}}
-    <li><div class="container">
-        Title : {{title}}
-        <br>
-        Desc : {{description}}
-        <br>
-        <form action="/like" method="post">
-        <button type="submit" name="like" value={{id}}>Like</button> : {{likes}}
-        </form>
-    </div></li>
-    {{/each}}
+        {{#each blogs}}
+        <li>
+            <div class="container">
+                Title : {{title}}
+                <br>
+                Desc : {{description}}
+                <br>
+                <form action="/like" method="post">
+                    <button type="submit" name="like" value={{id}}>Like</button> : {{likes}}
+                </form>
+                <form action="/editPost" method="post">
+                    <input type=" text" name="title" placeholder="title">
+                    <input type="text" name="desc" placeholder="desc">
+                    <button type="submit" name="id" value="{{this.id}}">Edit post</button>
+                </form>
+                <form action="/deleteBlog" method="post">
+                    <button type="submit" name="id" value="{{this.id}}">Remove post</button>
+                </form>
+            </div>
+        </li>
+        {{/each}}
     </div>
 </ul>
 {{!-- {{>footer}} --}}

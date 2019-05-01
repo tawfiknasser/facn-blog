@@ -43,10 +43,12 @@ const updateLikes = (id, cb) => {
   })
 }
 
-const updatePost = (id, title, description) =>
-  query.update(
-    `UPDATE blogs (title,description) WHERE id = ${id} VALUES ($1,$2);`,
-    [title, description],
+const updatePost = (id, title, description, cb) =>
+  query.insert(
+    `UPDATE blogs 
+      SET title = '${title}',
+      description = '${description}'
+       WHERE blogs.id = '${id}';`,
     cb
   );
 
