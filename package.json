@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "test": "NODE_ENV = test"
+    "test": "node src/tests/routes.test.js | tap-spec"
   },
   "repository": {
     "type": "git",
