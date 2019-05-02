@@ -12,6 +12,9 @@ const selectUserByName = (name, cb) =>
 const selectUserByUserName = (username, cb) =>
   query.select(`SELECT * from users where username = '${username}';`, cb);
 
+const selectUserByUserName = (username, cb) =>
+  query.select(`SELECT * from users where username = '${username}';`, cb);
+
 const deleteByIdFrom = (id, table, cb) =>
   query.select(`DELETE FROM ${table} WHERE id = ${id};`, cb);
 
