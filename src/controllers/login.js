@@ -12,7 +12,7 @@ exports.post = (req, res) => {
     } else {
       if (resu.rowCount === 0) {
         res.render('login');
-      } else if (resu.rows[0].count > 0) {
+      } else if (resu.rowCount > 0) {
         utils.comparePasswords(
           req.body.password,
           resu.rows[0].password,
@@ -29,12 +29,12 @@ exports.post = (req, res) => {
                   httpOnly: true
                 };
                 res.cookie('udetails', cookie, options);
-                res.render('login');
+                res.redirect('posts');
               } else {
                 console.log('Invalid user name or password');
               }
             }
-            res.render('login');
+            // res.redirect('login');
           }
         );
       } else {

@@ -1,4 +1,4 @@
-const query = require('./queries.js');
+const query = require("./queries.js");
 
 const selectAllFrom = (table, cb) =>
   query.select(`SELECT * from ${table};`, cb);
@@ -20,29 +20,30 @@ const deleteBlogByTitle = (title, cb) =>
 
 const addNewUser = (name, username, password, cb) =>
   query.insert(
-    'INSERT INTO users (name,username,password) VALUES ($1,$2,$3);',
+    "INSERT INTO users (name,username,password) VALUES ($1,$2,$3);",
     [name, username, password],
     cb
   );
 
 const addNewPost = (writerId, title, description, cb) =>
   query.insert(
-    'INSERT INTO blogs (writer_id,title,description) VALUES ($1,$2,$3);',
+    "INSERT INTO blogs (writer_id,title,description) VALUES ($1,$2,$3);",
     [writerId, title, description],
     cb
   );
 
 const updateLikes = (id, cb) => {
   let data;
-  selectByIdFrom(id, 'blogs', (err, result) => {
-    if (err) console.log('update error');
+  selectByIdFrom(id, "blogs", (err, result) => {
+    if (err) console.log("update error");
     data = result.rows;
-    query.update(`UPDATE blogs SET likes = $2 WHERE id = $1;`,
-      [data[0].id, data[0].likes += 1],
+    query.update(
+      `UPDATE blogs SET likes = $2 WHERE id = $1;`,
+      [data[0].id, (data[0].likes += 1)],
       cb
     );
-  })
-}
+  });
+};
 
 const updatePost = (id, title, description, cb) =>
   query.insert(
@@ -74,5 +75,5 @@ module.exports = {
   updateLikes,
   updatePost,
   trueUser,
-  getUserPass,
+  getUserPass
 };
