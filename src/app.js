@@ -12,7 +12,7 @@ const app = express();
 app.set('port', process.env.PORT || 3005);
 app.disable('x-powered-by');
 app.use(compression());
-app.use(favicon(path.join(__dirname, '..', 'assets', 'favicon.png')));
+app.use(favicon(path.join(__dirname, '..', 'public', 'assets', 'favicon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'views', 'layouts')));

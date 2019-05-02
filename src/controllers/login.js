@@ -1,6 +1,6 @@
 const ppcookie = require('cookie');
 const { sign, verify } = require('jsonwebtoken');
-const queries = require('../../database/queries/sql.js');
+const queries = require('../database/queries/sql.js');
 const utils = require('../utils/utils');
 
 const secret = 'blablabalbsasfsafe';

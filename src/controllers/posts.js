@@ -1,4 +1,4 @@
-const queries = require("../../database/queries/sql");
+const queries = require("../database/queries/sql");
 
 exports.get = (req, res) => {
   queries.selectAllFrom("blogs", (err, result) => {
@@ -9,7 +9,7 @@ exports.get = (req, res) => {
         .sort(function(a, b) {
           return a.id - b.id;
         })
-        .map(blog => {
+        .map((blog) => {
           if (blog.writer_id === userId) blog.isOwner = true;
           else blog.isOwner = false;
           return blog;
@@ -19,7 +19,7 @@ exports.get = (req, res) => {
 };
 
 exports.addPostGet = (req, res) => {
-  res.render("addpost");
+  res.render('addpost');
 };
 
 exports.addPost = (req, res) => {

@@ -1,4 +1,4 @@
-const queries = require('../../database/queries/sql.js');
+const queries = require('../database/queries/sql.js');
 const bcrypt = require('../utils/utils.js');
 
 exports.get = (request, response) => {
@@ -10,13 +10,6 @@ exports.get = (request, response) => {
 };
 
 exports.post = (request, response) => {
-  // console.log(request.body.name);
-  // console.log(`The response is: ${response}`);
-  // console.log(`Hashed password is ${bcrypt.hashPassword(request.body.password, (error, hashedPassword) => {
-  //   if (error) console.log(error);
-  //   else console.log(hashedPassword);
-  // })}`);
-
   queries.selectUserByName(request.body.username, (error, result) => {
     if (error) console.log(error);
     if (result.rows[0].count > 0) {
