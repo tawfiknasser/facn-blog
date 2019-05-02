@@ -7,7 +7,7 @@ const selectByIdFrom = (id, table, cb) =>
   query.select(`SELECT * from ${table} where id = ${id};`, cb);
 
 const selectUserByName = (name, cb) =>
-  query.select(`SELECT * from users where name = '${name}';`, cb);
+  query.select(`SELECT count(id) from users where name = '${name}';`, cb);
 
 const selectUserByUserName = (username, cb) =>
   query.select(`SELECT * from users where username = '${username}';`, cb);
