@@ -4,6 +4,7 @@ const posts = require("./posts");
 const login = require("./login");
 const like = require("./like");
 const editPost = require("./editPost");
+// const error = require('./error');
 const router = express.Router();
 
 router.get("/editPost", editPost.get);
@@ -20,5 +21,7 @@ router.post("/deleteBlog", posts.deleteBlog);
 router.post("/auth", login.checkauth);
 router.get("/signup", signup.get);
 router.post("/signup", signup.post);
+
+// router.use(error.client);
 
 module.exports = router;
