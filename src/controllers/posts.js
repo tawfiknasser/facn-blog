@@ -3,10 +3,17 @@ const queries = require("../../database/queries/sql");
 exports.get = (req, res) => {
   queries.selectAllFrom("blogs", (err, result) => {
     if (err) console.log("ERRROR");
+    let userId = 36;
     res.render("posts", {
-      blogs: result.rows.sort(function(a, b) {
-        return a.id - b.id;
-      })
+      blogs: result.rows
+        .sort(function(a, b) {
+          return a.id - b.id;
+        })
+        .map(blog => {
+          if (blog.writer_id === userId) blog.isOwner = true;
+          else blog.isOwner = false;
+          return blog;
+        })
     });
   });
 };
