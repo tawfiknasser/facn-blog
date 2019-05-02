@@ -3,7 +3,7 @@ const queries = require("../../database/queries/sql");
 exports.get = (req, res) => {
   queries.selectAllFrom("blogs", (err, result) => {
     if (err) console.log("ERRROR");
-    let userId = 36;
+    let userId = 12;
     res.render("posts", {
       blogs: result.rows
         .sort(function(a, b) {

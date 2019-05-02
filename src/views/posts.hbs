@@ -1,37 +1,43 @@
-{{!-- {{>header}} --}}
-
 <div class="container-fluid">
     <div class="container-fluid bg-secondary">
-        <a href="./addpost" class="btn btn-outline-success">Add Post</a>
+
+        <div class="container">
+            <br>
+            <a href=" ./addpost" class="btn btn-success">Add Post</a>
+
+        </div>
+        <br>
         {{#each blogs}}
         <div class="container jumbotron ">
-            <div>
-                <h3>Title: {{title}}</h3>
-                <h6>Desc: {{description}}</h6>
-                <div class="btn-group">
-                    <form action="/like" method="post">
-                        <button class="btn btn-outline-info" type="submit" name="like" value={{id}}>
-                            <i class="far fa-heart">
-                                : {{likes}}
-                            </i>
-                        </button>
-                    </form>
-                </div>
 
-                {{#if isOwner}}
-                <div class="btn-group">
-                    <form action="/editPost" method="get">
-                        <button type="submit" name="id" value="{{this.id}}" class="btn btn-basic">Edit post</button>
-                    </form>
-
-                    <form action="/deleteBlog" method="post">
-                        <button type="submit" name="id" value="{{this.id}}" class="btn btn-danger">Remove post</button>
-                    </form>
-                </div>
-                {{/if}}
+            <h3>Title: {{title}}</h3>
+            <h6>Desc: {{description}}</h6>
+            <div class="btn-group">
+                <form action="/like" method="post" class="form-group">
+                    <button class="btn btn-outline-info" type="submit" name="like" value={{id}}>
+                        <i class="far fa-heart">
+                            : {{likes}}
+                        </i>
+                    </button>
+                </form>
             </div>
+            <br>
+            {{#if isOwner}}
+            <div class="btn-group ">
+                <form action="/editPost" method="get" class="form-group">
+                    <button type="submit" name="id" value="{{this.id}}" class="btn btn-warning ">Edit
+                        post</button>
+                </form>
+
+                <form action="/deleteBlog" method="post" class="form-group">
+                    <button type="submit" name="id" value="{{this.id}}" class="btn btn-danger ">Remove
+                        post</button>
+                </form>
+            </div>
+            {{/if}}
+
         </div>
+        <hr>
         {{/each}}
     </div>
 </div>
-{{!-- {{>footer}} --}}
