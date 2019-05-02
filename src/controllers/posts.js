@@ -1,18 +1,16 @@
-const queries = require('../../database/queries/sql');
+const queries = require('../database/queries/sql');
 
 exports.get = (req, res) => {
   queries.selectAllFrom('blogs', (err, result) => {
     if (err) console.log('ERRROR');
     res.render('posts', {
-      blogs: result.rows.sort(function(a, b) {
-        return a.id - b.id;
-      })
+      blogs: result.rows.sort((a, b) => a.id - b.id)
     });
   });
 };
 
 exports.addPostGet = (req, res) => {
-  res.render('addpost')
+  res.render('addpost');
 };
 
 exports.addPost = (req, res) => {
