@@ -1,27 +1,22 @@
 const express = require("express");
 const signup = require("./signup");
-const posts = require("./posts");
-const login = require("./login");
-const like = require("./like");
-const editPost = require("./editPost");
-// const error = require('./error');
+const login = require('./login')
+const {serverError,clientError} = require('./error');
+const userControllers = require("./userControllers")
+
 const router = express.Router();
 
-router.get("/editPost", editPost.get);
-router.post("/saveChanges", editPost.saveChanges);
-
-router.get("/posts", posts.get);
-router.get("/addpost", posts.addPostGet);
-router.post("/addpost", posts.addPost);
-router.get("/", login.get);
-router.post("/login", login.post);
-router.post("/like", like.post);
-router.post("/editPost", posts.editPost);
-router.post("/deleteBlog", posts.deleteBlog);
-router.post("/auth", login.checkauth);
+//no need for auth
 router.get("/signup", signup.get);
 router.post("/signup", signup.post);
+router.post("/login", login.post);
+router.get("/login", login.get);
 
-// router.use(error.client);
+//need auth middleware
+router.use(userControllers);//user middleware
+
+//router.use(clientError);  No need cause all routes serve home
+router.use(serverError);
+
 
 module.exports = router;

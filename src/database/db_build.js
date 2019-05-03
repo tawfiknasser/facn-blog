@@ -11,7 +11,7 @@ const sql = fs.readFileSync(sqlPath).toString();
 const runDbBuild = cb => dbConnection.query(sql, cb);
 runDbBuild((err, res) => {
   if (err) throw err;
-  console.log(res);
+  
 });
 
 module.exports = runDbBuild;

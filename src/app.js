@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const helper = require('./views/helpers');
 const controllers = require('./controllers/index');
 
+
 const app = express();
 
 app.set('port', process.env.PORT || 3005);
@@ -30,13 +31,5 @@ app.engine(
 );
 
 app.use(controllers);
-
-app.use((request, response) => {
-  response.status(404).sendFile(path.join(__dirname, '..', 'public', '404.html'));
-});
-
-app.use((error, request, response, next) => {
-  response.status(500).sendFile(path.join(__dirname, '..', 'public', '500.html'));
-});
 
 module.exports = app;
