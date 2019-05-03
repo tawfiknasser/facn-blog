@@ -10,9 +10,10 @@ exports.get = (request, response) => {
 };
 
 exports.post = (request, response) => {
+
   queries.selectUserByName(request.body.username, (error, result) => {
     if (error) console.log(error);
-    if (result.rows[0].count > 0) {
+    if (result.rows[0]) {
       console.log('Sorry, that name is already taken');
       response.redirect('/signup');
     } else {
@@ -30,7 +31,7 @@ exports.post = (request, response) => {
             });
         }
       });
-      response.redirect('/posts');
+      response.redirect('/');
     }
   });
 };

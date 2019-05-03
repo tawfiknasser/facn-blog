@@ -3,10 +3,7 @@ const { sign, verify } = require('jsonwebtoken');
 const queries = require('../../database/queries/sql.js');
 const utils = require('../../utils/utils');
 
-const secret = 'blablabalbsasfsafe';
-
 exports.post = (req, res) => {
-  console.log("trying login post");
   queries.getUserPass(req.body.username, (err, resu) => {
     if (err) {
       console.log('Error in validating the username and password');
@@ -25,7 +22,7 @@ exports.post = (req, res) => {
                   'content-type': 'application/json',
                   uUser: req.body.username
                 };
-                const cookie = sign(uDetails, secret);
+                const cookie = sign(uDetails, process.env.SECRET);
                 const options = {
                   httpOnly: true
                 };
@@ -40,7 +37,7 @@ exports.post = (req, res) => {
         );
       } else {
         console.log('invalid user');
-        res.redirect('/login');
+        res.redirect('/');
       }
     }
   });
@@ -57,7 +54,7 @@ exports.checkauth = (res, req) => {
     }
 
     if (jwt) {
-      verify(jwt.udetails, secret, (err, jwt) => {
+      verify(jwt.udetails,  process.env.SECRET, (err, jwt) => {
         if (err) res.render('login');
 
         const { uUser } = jwt;
