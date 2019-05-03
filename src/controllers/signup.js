@@ -4,7 +4,6 @@ const bcrypt = require('../utils/utils.js');
 exports.get = (request, response) => {
   queries.selectUserByName(request.body.username, (error, result) => {
     if (error) console.log('Error');
-    console.log(result);
     response.render('signup');
   });
 };
@@ -22,9 +21,7 @@ exports.post = (request, response) => {
         else {
           queries.addNewUser(request.body.name, request.body.username,
             hashedPassword, (err, res) => {
-              console.log(res);
               if (err) {
-                console.log(err);
               } else {
                 console.log('Creating new user account');
               }
