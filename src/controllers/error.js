@@ -1,9 +1,8 @@
-const path = require('path');
-
-exports.client = (req, res) => {
-  res.render('layouts/404');
+//// TODO:  error layout instead of serving html
+exports.clientError = (req, res) => {
+  response.status(404).sendFile(path.join(__dirname, '..', 'public', '404.html'));
 };
 
-exports.server = (err, req, res, next) => {
-  res.render('layouts/500');
+exports.serverError = (err, req, res, next) => {
+  response.status(500).sendFile(path.join(__dirname, '..', 'public', '500.html'));
 }

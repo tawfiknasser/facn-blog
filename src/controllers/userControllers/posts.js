@@ -1,6 +1,6 @@
 const ppcookie = require("cookie");
 const { decode } = require("jsonwebtoken");
-const queries = require("../database/queries/sql");
+const queries = require("../../database/queries/sql");
 
 exports.get = (req, res) => {
   queries.selectAllFrom("blogs", (err, result) => {

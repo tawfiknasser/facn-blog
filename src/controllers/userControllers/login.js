@@ -1,11 +1,12 @@
 const ppcookie = require('cookie');
 const { sign, verify } = require('jsonwebtoken');
-const queries = require('../database/queries/sql.js');
-const utils = require('../utils/utils');
+const queries = require('../../database/queries/sql.js');
+const utils = require('../../utils/utils');
 
 const secret = 'blablabalbsasfsafe';
 
 exports.post = (req, res) => {
+  console.log("trying login post");
   queries.getUserPass(req.body.username, (err, resu) => {
     if (err) {
       console.log('Error in validating the username and password');

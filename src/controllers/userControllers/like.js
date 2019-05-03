@@ -1,4 +1,4 @@
-const queries = require('../database/queries/sql');
+const queries = require('../../database/queries/sql');
 
 exports.post = (req, res) => {
   const id = req.body.like;

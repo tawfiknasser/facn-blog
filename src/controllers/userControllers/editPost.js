@@ -1,5 +1,5 @@
 const url = require("url");
-const queries = require("../database/queries/sql");
+const queries = require("../../database/queries/sql");
 
 exports.get = (req, res) => {
   let id = url.parse(req.url).query.split("=")[1];
